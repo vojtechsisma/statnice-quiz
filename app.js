@@ -14,6 +14,14 @@ const SUBJECTS = {
 const app = document.getElementById("app");
 const breadcrumbs = document.getElementById("breadcrumbs");
 
+const MODE_KEY = "quiz.viewMode";
+function getMode() {
+  return localStorage.getItem(MODE_KEY) || "one";
+}
+function setMode(mode) {
+  localStorage.setItem(MODE_KEY, mode);
+}
+
 function shuffle(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -104,6 +112,7 @@ function renderTopic(subjectKey, topicId) {
     subjectKey,
     topicId,
     topic,
+    current: 0,
     questions: shuffle(topic.questions).map(q => {
       const opts = q.options.map((text, i) => ({ text, originallyCorrect: i === q.correct }));
       const shuffledOpts = shuffle(opts);
@@ -122,51 +131,89 @@ function renderTopic(subjectKey, topicId) {
   renderQuiz();
 }
 
+function renderQuestionCard(q, qi, displayNum, hideInlineCheck) {
+  return `
+    <div class="question" data-qi="${qi}">
+      <div class="q-text">${displayNum}. ${q.q}</div>
+      <div class="options">
+        ${q.options.map((opt, oi) => {
+          let cls = "option";
+          if (q.revealed) {
+            if (oi === q.correct) cls += " correct";
+            else if (oi === q.selected) cls += " incorrect";
+          } else if (q.selected === oi) {
+            cls += " selected";
+          }
+          return `
+            <label class="${cls}">
+              <input type="radio" name="q${qi}" value="${oi}" ${q.selected === oi ? "checked" : ""} ${q.revealed ? "disabled" : ""} />
+              ${opt}
+            </label>
+          `;
+        }).join("")}
+      </div>
+      ${q.revealed ? `<div class="explanation"><strong>Vysvětlení:</strong> ${q.explanation}</div>` : ""}
+      ${!q.revealed && !hideInlineCheck ? `<div class="actions"><button data-action="check" data-qi="${qi}" ${q.selected === null ? "disabled" : ""}>Zkontrolovat</button></div>` : ""}
+    </div>
+  `;
+}
+
 function renderQuiz() {
-  const { topic, questions } = quizState;
+  const { topic, questions, current } = quizState;
+  const mode = getMode();
   const answered = questions.filter(q => q.revealed).length;
   const correct = questions.filter(q => q.revealed && q.selected === q.correct).length;
   const allDone = answered === questions.length;
+
+  let body = "";
+  if (mode === "one") {
+    const qi = current;
+    const q = questions[qi];
+    const onLast = qi === questions.length - 1;
+    let primary;
+    if (!q.revealed) {
+      primary = `<button data-action="check" data-qi="${qi}" ${q.selected === null ? "disabled" : ""}>Zkontrolovat</button>`;
+    } else if (!onLast) {
+      primary = `<button data-action="next">Další →</button>`;
+    } else {
+      primary = `<button data-action="next" disabled>Konec</button>`;
+    }
+    body = `
+      ${renderQuestionCard(q, qi, qi + 1, true)}
+      <div class="actions">
+        <button data-action="prev" class="secondary" ${qi === 0 ? "disabled" : ""}>← Předchozí</button>
+        ${primary}
+      </div>
+    `;
+  } else {
+    body = `<div id="questions">${questions.map((q, qi) => renderQuestionCard(q, qi, qi + 1)).join("")}</div>`;
+  }
 
   app.innerHTML = `
     <div class="quiz-header">
       <h2>${topic.id}. ${topic.title}</h2>
       <p>${topic.description}</p>
-      <div class="progress">Zodpovězeno: ${answered}/${questions.length} · Správně: ${correct}</div>
+      <div class="mode-toggle">
+        <span>Zobrazení:</span>
+        <button data-action="mode" data-mode="all" class="${mode === "all" ? "" : "secondary"}">Vše</button>
+        <button data-action="mode" data-mode="one" class="${mode === "one" ? "" : "secondary"}">Po jedné</button>
+      </div>
+      <div class="progress">
+        ${mode === "one" ? `Otázka ${current + 1}/${questions.length} · ` : ""}Zodpovězeno: ${answered}/${questions.length} · Správně: ${correct}
+      </div>
+      <div class="progressbar" aria-label="Postup kvízu">
+        <div class="progressbar-fill" style="width: ${(answered / questions.length) * 100}%"></div>
+        ${mode === "one" ? `<div class="progressbar-marker" style="left: ${(current / Math.max(questions.length - 1, 1)) * 100}%"></div>` : ""}
+      </div>
     </div>
-    ${allDone ? `
+    ${allDone && mode === "all" ? `
       <div class="score">
         <div>Výsledek</div>
         <div class="big">${correct}/${questions.length}</div>
         <div style="color:var(--muted);">${Math.round((correct / questions.length) * 100)}%</div>
       </div>
     ` : ""}
-    <div id="questions">
-      ${questions.map((q, qi) => `
-        <div class="question" data-qi="${qi}">
-          <div class="q-text">${qi + 1}. ${q.q}</div>
-          <div class="options">
-            ${q.options.map((opt, oi) => {
-              let cls = "option";
-              if (q.revealed) {
-                if (oi === q.correct) cls += " correct";
-                else if (oi === q.selected) cls += " incorrect";
-              } else if (q.selected === oi) {
-                cls += " selected";
-              }
-              return `
-                <label class="${cls}">
-                  <input type="radio" name="q${qi}" value="${oi}" ${q.selected === oi ? "checked" : ""} ${q.revealed ? "disabled" : ""} />
-                  ${opt}
-                </label>
-              `;
-            }).join("")}
-          </div>
-          ${q.revealed ? `<div class="explanation"><strong>Vysvětlení:</strong> ${q.explanation}</div>` : ""}
-          ${!q.revealed ? `<div class="actions"><button data-action="check" data-qi="${qi}" ${q.selected === null ? "disabled" : ""}>Zkontrolovat</button></div>` : ""}
-        </div>
-      `).join("")}
-    </div>
+    ${body}
     <div class="actions">
       <button data-action="restart" class="secondary">Začít znovu</button>
       <button data-action="back" class="secondary">Zpět na okruhy</button>
@@ -193,6 +240,21 @@ function renderQuiz() {
         renderTopic(quizState.subjectKey, quizState.topicId);
       } else if (action === "back") {
         navigate(`/${quizState.subjectKey}`);
+      } else if (action === "next") {
+        if (quizState.current < quizState.questions.length - 1) {
+          quizState.current++;
+          renderQuiz();
+          window.scrollTo(0, 0);
+        }
+      } else if (action === "prev") {
+        if (quizState.current > 0) {
+          quizState.current--;
+          renderQuiz();
+          window.scrollTo(0, 0);
+        }
+      } else if (action === "mode") {
+        setMode(btn.dataset.mode);
+        renderQuiz();
       }
     });
   });

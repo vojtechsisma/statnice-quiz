@@ -58,6 +58,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Hlavní paradigmata: imperativní (procedurální, OOP), deklarativní (funkcionální, logické)."
+      },
+      {
+        q: "Co je funkce vyššího řádu?",
+        options: [
+          "Funkce, která přijímá funkci jako argument nebo vrací funkci",
+          "Funkce s mnoha argumenty",
+          "Funkce volající sebe sama",
+          "Funkce s vedlejším efektem"
+        ],
+        correct: 0,
+        explanation: "Funkce vyššího řádu (např. map, filter, fold) pracují s funkcemi jako s daty."
+      },
+      {
+        q: "Co je currying?",
+        options: [
+          "Transformace funkce více argumentů na řetězec funkcí jednoho argumentu",
+          "Optimalizace rekurze",
+          "Spojení dvou funkcí do jedné",
+          "Změna pořadí argumentů"
+        ],
+        correct: 0,
+        explanation: "Curryovaná funkce f(a,b,c) se zapíše jako f(a)(b)(c)."
+      },
+      {
+        q: "Co je líné (lazy) vyhodnocení?",
+        options: [
+          "Výraz se vyhodnotí až ve chvíli, kdy je jeho hodnota skutečně potřeba",
+          "Vyhodnocení odložené na konec programu",
+          "Pomalé sekvenční zpracování",
+          "Vyhodnocení v samostatném vlákně"
+        ],
+        correct: 0,
+        explanation: "Lazy evaluation (Haskell) umožňuje pracovat s nekonečnými strukturami a vyhýbat se zbytečným výpočtům."
+      },
+      {
+        q: "Co je čistá funkce (pure function)?",
+        options: [
+          "Funkce bez vedlejších efektů, výsledek závisí jen na argumentech",
+          "Funkce psaná v assembleru",
+          "Funkce, která vrací jen booleovskou hodnotu",
+          "Funkce, která modifikuje globální stav"
+        ],
+        correct: 0,
+        explanation: "Čistá funkce je referenčně transparentní a nemá side effects (IO, mutace)."
+      },
+      {
+        q: "Která redukční strategie vyhodnocuje nejprve argumenty?",
+        options: [
+          "Applicative order (call by value)",
+          "Normal order (call by name)",
+          "Lazy evaluation",
+          "Call by need"
+        ],
+        correct: 0,
+        explanation: "Aplikativní redukce nejprve vyhodnotí argumenty; normální postupuje od vnějšího redex."
+      },
+      {
+        q: "K čemu slouží funkce `fold` (reduce)?",
+        options: [
+          "Postupně kombinuje prvky seznamu pomocí binární operace na jednu hodnotu",
+          "Filtruje prvky seznamu",
+          "Zobrazuje seznam",
+          "Setřídí seznam"
+        ],
+        correct: 0,
+        explanation: "fold/reduce např. sečte všechny prvky: foldr (+) 0 [1,2,3] = 6."
+      },
+      {
+        q: "Co je algebraický datový typ?",
+        options: [
+          "Typ definovaný kombinací součtů (variantů) a součinů (n-tic) jiných typů",
+          "Typ pro algebraické výpočty",
+          "Pole celých čísel",
+          "Typ definovaný matematickou rovnicí"
+        ],
+        correct: 0,
+        explanation: "ADT (např. data Maybe a = Nothing | Just a) – sum + product types."
       }
     ]
   },
@@ -120,6 +197,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Logické programování je deklarativní: definujeme vztahy/predikáty, interpret hledá řešení."
+      },
+      {
+        q: "Co je unifikace v Prologu?",
+        options: [
+          "Proces hledání substituce proměnných tak, aby se dva termy staly shodnými",
+          "Spojování dvou predikátů do jednoho",
+          "Sloučení dvou databází",
+          "Převedení termu na řetězec"
+        ],
+        correct: 0,
+        explanation: "Unifikace najde nejobecnější unifikátor; např. f(X, b) a f(a, Y) se unifikují s X=a, Y=b."
+      },
+      {
+        q: "Co je pravidlo v Prologu?",
+        options: [
+          "Klauzule tvaru `head :- body.` – hlava platí, pokud platí tělo",
+          "Vstupní příkaz interpretu",
+          "Direktiva pro kompilátor",
+          "Definice datového typu"
+        ],
+        correct: 0,
+        explanation: "Pravidlo: rodic(X,Y) :- otec(X,Y). – hlava platí, pokud lze dokázat tělo."
+      },
+      {
+        q: "Jak se v Prologu zapisuje seznam s hlavou H a zbytkem T?",
+        options: [
+          "[H|T]",
+          "(H, T)",
+          "list(H, T)",
+          "H::T"
+        ],
+        correct: 0,
+        explanation: "Seznamová notace [H|T] – pattern matching na hlavu a zbytek."
+      },
+      {
+        q: "Co dělá predikát `fail` v Prologu?",
+        options: [
+          "Vždy selže a vyvolá backtracking",
+          "Ukončí program s chybou",
+          "Vypíše chybové hlášení",
+          "Smaže databázi"
+        ],
+        correct: 0,
+        explanation: "fail je vždy neúspěšný cíl; používá se pro vynucení backtrackingu."
+      },
+      {
+        q: "Co je negace neúspěchem (negation as failure)?",
+        options: [
+          "Cíl `\\+ G` uspěje, pokud G nelze dokázat",
+          "Logická negace pomocí not()",
+          "Pravidlo, které vždy selže",
+          "Chyba v unifikaci"
+        ],
+        correct: 0,
+        explanation: "\\+ G není klasická logická negace, ale uzavřený svět – cíl neplatí, pokud ho neumíme dokázat."
+      },
+      {
+        q: "Která datová struktura tvoří databázi Prologu?",
+        options: [
+          "Množina faktů a pravidel (klauzulí)",
+          "Tabulka jako v SQL",
+          "Strom",
+          "Hash mapa"
+        ],
+        correct: 0,
+        explanation: "Prolog databáze je seznam klauzulí; lze ji dynamicky měnit (assert, retract)."
+      },
+      {
+        q: "Co znamená SLD-rezoluce?",
+        options: [
+          "Linear resolution with Selection function pro Definite klauzule – inferenční pravidlo Prologu",
+          "Sériová logická dedukce",
+          "Algoritmus pro detekci cyklů",
+          "Komprese klauzulí"
+        ],
+        correct: 0,
+        explanation: "SLD-rezoluce je základ provádění Prologu: výběr cíle, unifikace, expanze."
       }
     ]
   },
@@ -182,6 +336,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "AND-split spustí všechny větve paralelně, AND-join čeká na dokončení všech."
+      },
+      {
+        q: "Co reprezentuje kruh (kroužek) v BPMN?",
+        options: [
+          "Událost (event) – start, mezilehlou nebo koncovou",
+          "Aktivitu",
+          "Bránu",
+          "Datový sklad"
+        ],
+        correct: 0,
+        explanation: "Eventy v BPMN: kruh; tenký=start, dvojitý=intermediate, tučný=end."
+      },
+      {
+        q: "Co reprezentuje zaoblený obdélník v BPMN?",
+        options: [
+          "Aktivitu (task nebo subprocess)",
+          "Bránu",
+          "Účastníka",
+          "Datový tok"
+        ],
+        correct: 0,
+        explanation: "Aktivita = úloha; zaoblený obdélník symbolizuje práci, kterou je třeba vykonat."
+      },
+      {
+        q: "Co je lane v BPMN?",
+        options: [
+          "Podrozdělení poolu reprezentující roli nebo oddělení",
+          "Spojovací čára",
+          "Typ události",
+          "Datový objekt"
+        ],
+        correct: 0,
+        explanation: "Lane je horizontální nebo vertikální pruh uvnitř poolu pro organizaci aktivit dle rolí."
+      },
+      {
+        q: "Co znamená XOR brána?",
+        options: [
+          "Exkluzivní volba – proces pokračuje právě jednou z větví",
+          "Všechny větve paralelně",
+          "Žádná z větví",
+          "Libovolná podmnožina větví"
+        ],
+        correct: 0,
+        explanation: "XOR (exclusive gateway) – právě jedna podmínka splněna, jen jedna větev."
+      },
+      {
+        q: "Co je workflow pattern Deferred Choice?",
+        options: [
+          "Volba větve se rozhodne až podle vnější události (např. zprávy)",
+          "Volba se odkládá na konec procesu",
+          "Volba bez následků",
+          "Paralelní zpracování všech voleb"
+        ],
+        correct: 0,
+        explanation: "Deferred choice: alternativy čekají na vnější vstup; první událost rozhodne."
+      },
+      {
+        q: "Co popisuje use case scénář?",
+        options: [
+          "Konkrétní posloupnost kroků interakce aktéra a systému pro daný cíl",
+          "Diagramy tříd",
+          "Kódovou implementaci",
+          "Databázové schéma"
+        ],
+        correct: 0,
+        explanation: "Scénář obsahuje hlavní tok, alternativní toky, předpoklady, výsledek."
+      },
+      {
+        q: "Co NENÍ artefakt BPMN?",
+        options: [
+          "UML třída",
+          "Anotace (text annotation)",
+          "Skupina (group)",
+          "Datový objekt"
+        ],
+        correct: 0,
+        explanation: "Artefakty BPMN: datový objekt, skupina, anotace. UML třída do BPMN nepatří."
       }
     ]
   },
@@ -244,6 +475,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Dva objekty mohou mít identický stav, ale mají vlastní identitu (např. dvě různé instance)."
+      },
+      {
+        q: "Co je abstrakce v OOP?",
+        options: [
+          "Zaměření na podstatné vlastnosti a chování při ignorování nepodstatných detailů",
+          "Skrytí implementačních detailů",
+          "Vytvoření abstraktní třídy",
+          "Vytvoření rozhraní"
+        ],
+        correct: 0,
+        explanation: "Abstrakce vybírá relevantní rysy reálného světa do modelu třídy."
+      },
+      {
+        q: "Co je dědičnost?",
+        options: [
+          "Mechanismus, kdy podtřída přebírá atributy a metody nadtřídy a může je rozšířit",
+          "Kopírování objektů",
+          "Sdílení paměti mezi třídami",
+          "Vícenásobná instance třídy"
+        ],
+        correct: 0,
+        explanation: "Dědičnost (is-a) umožňuje znovupoužití kódu a hierarchii tříd."
+      },
+      {
+        q: "Co znamená vazba (coupling)?",
+        options: [
+          "Míra vzájemné závislosti mezi moduly/třídami",
+          "Spojení dvou objektů do páru",
+          "Propojení s databází",
+          "Hierarchie dědičnosti"
+        ],
+        correct: 0,
+        explanation: "Cíl: nízká vazba (loose coupling) – moduly závisí minimálně, snadná změna a testování."
+      },
+      {
+        q: "Jaký je rozdíl mezi procedurálním a OOP přístupem?",
+        options: [
+          "Procedurální odděluje data a funkce, OOP je spojuje do objektů",
+          "OOP nemůže používat funkce",
+          "Procedurální je vždy rychlejší",
+          "OOP nepodporuje rekurzi"
+        ],
+        correct: 0,
+        explanation: "OOP zapouzdřuje data a chování do objektů; procedurální přístup data zpracovává odděleně funkcemi."
+      },
+      {
+        q: "Co je abstraktní třída?",
+        options: [
+          "Třída, kterou nelze instanciovat a obvykle obsahuje abstraktní metody",
+          "Třída bez atributů",
+          "Třída v jiné třídě",
+          "Třída se statickými metodami"
+        ],
+        correct: 0,
+        explanation: "Abstraktní třída slouží jako šablona pro odvozené třídy; vynucuje implementaci určitých metod."
+      },
+      {
+        q: "Co je rozhraní (interface)?",
+        options: [
+          "Kontrakt definující sadu metod, které musí třída implementovat",
+          "Třída pro GUI",
+          "Vnitřní třída",
+          "Privátní část třídy"
+        ],
+        correct: 0,
+        explanation: "Interface odděluje 'co' (kontrakt) od 'jak' (implementace) a umožňuje polymorfismus bez dědičnosti."
+      },
+      {
+        q: "Co je vícenásobná dědičnost?",
+        options: [
+          "Třída může dědit z více nadtříd současně",
+          "Třída může být dědicí vícekrát",
+          "Více objektů sdílí stejnou třídu",
+          "Dědičnost přes více úrovní"
+        ],
+        correct: 0,
+        explanation: "Vícenásobná dědičnost (C++, Python) může vést k diamantovému problému; Java ji řeší přes interface."
       }
     ]
   },
@@ -306,6 +614,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Agilní manifest preferuje: jednotlivce, fungující SW, spolupráci se zákazníkem, reakci na změnu."
+      },
+      {
+        q: "Které role definuje Scrum?",
+        options: [
+          "Product Owner, Scrum Master, vývojový tým",
+          "Manager, vývojář, tester",
+          "Pouze tým bez rolí",
+          "Architekt, programátor, analytik"
+        ],
+        correct: 0,
+        explanation: "Tři role Scrumu: Product Owner (priority), Scrum Master (proces), Developers (realizace)."
+      },
+      {
+        q: "Co je RUP (Rational Unified Process)?",
+        options: [
+          "Iterativní metodika založená na UML s fázemi: inception, elaboration, construction, transition",
+          "Agilní framework",
+          "Vodopád s testováním",
+          "Databázová metodika"
+        ],
+        correct: 0,
+        explanation: "RUP je use-case driven, iterativní, využívá UML, byl předchůdcem agilních přístupů."
+      },
+      {
+        q: "Co je hlavní cíl párového programování (XP)?",
+        options: [
+          "Dva vývojáři u jednoho počítače zlepšují kvalitu kódu a sdílí znalosti",
+          "Dva nezávislí programátoři řeší stejný úkol",
+          "Programování ve dvojici klient-server",
+          "Test ve dvojici"
+        ],
+        correct: 0,
+        explanation: "Pair programming v XP: driver píše, navigator kontroluje – průběžný code review."
+      },
+      {
+        q: "Co je daily scrum (standup)?",
+        options: [
+          "Krátké denní setkání (max 15 min) o stavu, plánech a překážkách",
+          "Týdenní reporting",
+          "Schůzka s klientem",
+          "Plánování sprintu"
+        ],
+        correct: 0,
+        explanation: "Daily scrum synchronizuje tým, odhaluje překážky."
+      },
+      {
+        q: "Co je product backlog?",
+        options: [
+          "Seřazený seznam požadavků na produkt vlastněný Product Ownerem",
+          "Seznam chyb",
+          "Plán sprintu",
+          "Dokumentace produktu"
+        ],
+        correct: 0,
+        explanation: "Backlog je živý dokument; PO priorizuje, tým odhaduje a vybírá do sprintu."
+      },
+      {
+        q: "Co je retrospektiva ve Scrumu?",
+        options: [
+          "Setkání týmu po sprintu pro zlepšení procesu",
+          "Demo produktu zákazníkovi",
+          "Plánování dalšího sprintu",
+          "Code review"
+        ],
+        correct: 0,
+        explanation: "Retrospektiva hodnotí co fungovalo, co ne, a stanoví zlepšení pro další sprint."
+      },
+      {
+        q: "Která metodika NENÍ agilní?",
+        options: [
+          "Vodopádový model",
+          "Scrum",
+          "XP",
+          "Kanban"
+        ],
+        correct: 0,
+        explanation: "Vodopád je klasický sekvenční model, ostatní jsou agilní."
       }
     ]
   },
@@ -368,6 +753,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "RDF zapisuje fakta jako trojice; tvoří základ sémantického webu."
+      },
+      {
+        q: "Co je taxonomie?",
+        options: [
+          "Hierarchické zařazení pojmů do kategorií (is-a)",
+          "Plochý seznam pojmů",
+          "Databázový dotaz",
+          "Datový typ"
+        ],
+        correct: 0,
+        explanation: "Taxonomie strukturuje pojmy do stromu (např. zvířata → savci → psi)."
+      },
+      {
+        q: "Co je RDFS?",
+        options: [
+          "RDF Schema – jazyk pro definici tříd a vlastností nad RDF",
+          "Resource Database File System",
+          "RDF Storage",
+          "Šifrovaný RDF formát"
+        ],
+        correct: 0,
+        explanation: "RDFS poskytuje základní typový systém: rdfs:Class, rdfs:subClassOf, rdfs:Property."
+      },
+      {
+        q: "Co tvoří RDF trojice?",
+        options: [
+          "Subjekt, predikát, objekt",
+          "Klíč, hodnota, typ",
+          "Třída, instance, atribut",
+          "Vstup, operace, výstup"
+        ],
+        correct: 0,
+        explanation: "Subjekt-predikát-objekt: např. <Jan> <máRád> <Marie>."
+      },
+      {
+        q: "Co je 4 principy Linked Data dle Tima Berners-Lee?",
+        options: [
+          "Použít URI, použít HTTP URI, vrátit užitečné info, propojit na další URI",
+          "HTML, CSS, JS, JSON",
+          "Šifrování, autentizace, autorizace, audit",
+          "REST, SOAP, RPC, GraphQL"
+        ],
+        correct: 0,
+        explanation: "Čtyři pravidla Linked Data: jednoznačné URI, HTTP přístup, RDF data, odkazy na další zdroje."
+      },
+      {
+        q: "Co je informace vs. data?",
+        options: [
+          "Informace jsou data interpretovaná v kontextu",
+          "Informace jsou nestrukturovaná data",
+          "Data jsou interpretovaná, informace surová",
+          "Synonyma"
+        ],
+        correct: 0,
+        explanation: "Data jsou syrová fakta; přidání kontextu a smyslu tvoří informaci."
+      },
+      {
+        q: "Která pyramida popisuje hierarchii DIKW?",
+        options: [
+          "Data → Information → Knowledge → Wisdom",
+          "Data → Database → Knowledge → Web",
+          "Decision → Information → Knowledge → World",
+          "Documents → Indexes → Keys → Wisdom"
+        ],
+        correct: 0,
+        explanation: "DIKW pyramida: každá vyšší úroveň přidává kontext, vzory, smysl."
+      },
+      {
+        q: "Která ontologie popisuje sociální vazby na webu (FOAF)?",
+        options: [
+          "Friend Of A Friend",
+          "First Of All Friends",
+          "Format Of Authenticated Friends",
+          "Foundation Of All Folks"
+        ],
+        correct: 0,
+        explanation: "FOAF popisuje osoby a vztahy mezi nimi v RDF."
       }
     ]
   },
@@ -430,6 +892,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Triple store ukládá RDF data; známé implementace: Apache Jena, Virtuoso, GraphDB."
+      },
+      {
+        q: "Která klauzule SPARQL slouží k filtrování trojic?",
+        options: [
+          "WHERE s pattern matching trojic",
+          "FILTER bez WHERE",
+          "SELECT",
+          "ORDER BY"
+        ],
+        correct: 0,
+        explanation: "SPARQL WHERE definuje vzor trojic, FILTER omezuje dále."
+      },
+      {
+        q: "Která forma SPARQL dotazu vrací RDF graf místo tabulky?",
+        options: [
+          "CONSTRUCT",
+          "SELECT",
+          "ASK",
+          "DESCRIBE"
+        ],
+        correct: 0,
+        explanation: "CONSTRUCT vytvoří nový RDF graf podle šablony; SELECT vrací proměnné, ASK boolean."
+      },
+      {
+        q: "Co dělá dotaz typu ASK v SPARQL?",
+        options: [
+          "Vrací true/false, zda v datech existuje řešení vzoru",
+          "Vrací počet řešení",
+          "Vrací první řešení",
+          "Vytváří nové trojice"
+        ],
+        correct: 0,
+        explanation: "ASK je boolean dotaz – pouze ověřuje existenci."
+      },
+      {
+        q: "Co je SPARQL endpoint?",
+        options: [
+          "Webová služba přijímající SPARQL dotazy nad triple store",
+          "URL konkrétní entity",
+          "RDF soubor",
+          "Reasoning engine"
+        ],
+        correct: 0,
+        explanation: "Endpoint (např. DBpedia) poskytuje HTTP API pro SPARQL dotazy."
+      },
+      {
+        q: "Co je OWA (Open World Assumption)?",
+        options: [
+          "Co není explicitně řečeno, není automaticky nepravdivé – chybí přesvědčení o úplnosti dat",
+          "Otevřený software",
+          "Předpoklad otevřené databáze",
+          "Dotaz nad celým webem"
+        ],
+        correct: 0,
+        explanation: "OWA: oproti CWA v databázích, nemůžeme tvrdit, že fakt neplatí, jen že není znám."
+      },
+      {
+        q: "Co je SKOS?",
+        options: [
+          "Simple Knowledge Organization System – pro slovníky, tezaury, klasifikace",
+          "SPARQL Knowledge Operation Standard",
+          "Speciální OWL syntaxe",
+          "Šablona ontologií"
+        ],
+        correct: 0,
+        explanation: "SKOS umožňuje publikovat řízené slovníky a tezaury jako RDF."
+      },
+      {
+        q: "Která vrstva architektury sémantického webu zajišťuje důvěryhodnost?",
+        options: [
+          "Trust (s podpisem a důkazem)",
+          "RDF",
+          "URI",
+          "SPARQL"
+        ],
+        correct: 0,
+        explanation: "Vyšší vrstvy: Logic, Proof, Trust – ověřování pravdivosti a původu."
       }
     ]
   },
@@ -492,6 +1031,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Před relačním modelem (Codd, 1970) dominovaly hierarchický (IMS) a síťový (CODASYL) model."
+      },
+      {
+        q: "Co znamená vlastnost Isolation v ACID?",
+        options: [
+          "Souběžné transakce se neovlivňují tak, aby vznikla nekonzistence",
+          "Data jsou šifrována",
+          "Každá tabulka má vlastní soubor",
+          "Transakce běží sekvenčně bez možnosti paralelismu"
+        ],
+        correct: 0,
+        explanation: "Isolation: výsledek souběžných transakcí je jako při nějakém sériovém uspořádání."
+      },
+      {
+        q: "Co je cizí klíč (foreign key)?",
+        options: [
+          "Atribut odkazující na primární klíč jiné (nebo téže) tabulky",
+          "Klíč uložený mimo databázi",
+          "Klíč jiného uživatele",
+          "Šifrovaný klíč"
+        ],
+        correct: 0,
+        explanation: "Foreign key zajišťuje referenční integritu mezi tabulkami."
+      },
+      {
+        q: "Co dělá příkaz SQL `GROUP BY`?",
+        options: [
+          "Seskupí řádky se stejnými hodnotami zadaných sloupců pro agregaci",
+          "Setřídí řádky",
+          "Filtruje řádky",
+          "Spojí tabulky"
+        ],
+        correct: 0,
+        explanation: "GROUP BY se používá s agregačními funkcemi (COUNT, SUM, AVG)."
+      },
+      {
+        q: "Jaký je rozdíl mezi WHERE a HAVING?",
+        options: [
+          "WHERE filtruje řádky před agregací, HAVING po agregaci (na skupinách)",
+          "Není rozdíl",
+          "WHERE jen pro JOIN, HAVING pro SELECT",
+          "HAVING je pro indexy"
+        ],
+        correct: 0,
+        explanation: "WHERE pracuje s jednotlivými řádky; HAVING filtruje výsledky GROUP BY."
+      },
+      {
+        q: "Co je index v databázi?",
+        options: [
+          "Pomocná datová struktura urychlující vyhledávání podle určitého sloupce",
+          "Pořadí řádků v tabulce",
+          "Identifikátor řádku",
+          "Šifrovací mechanismus"
+        ],
+        correct: 0,
+        explanation: "Index (B-strom, hash) zrychluje SELECT, ale zpomaluje INSERT/UPDATE."
+      },
+      {
+        q: "Co je NoSQL databáze?",
+        options: [
+          "Nerelační databázový systém (key-value, dokumentový, sloupcový, grafový)",
+          "Databáze bez SQL syntaxe",
+          "Databáze pouze pro čtení",
+          "Šifrovaná databáze"
+        ],
+        correct: 0,
+        explanation: "NoSQL: MongoDB (doc), Redis (kv), Cassandra (col), Neo4j (graph) – flexibilní schéma."
+      },
+      {
+        q: "Co dělá DBMS (Database Management System)?",
+        options: [
+          "Spravuje data – ukládání, dotazování, transakce, zabezpečení, integritu",
+          "Pouze ukládá soubory",
+          "Generuje SQL kód",
+          "Komprimuje data"
+        ],
+        correct: 0,
+        explanation: "DBMS poskytuje vrstvu nad daty: konkurence, transakce, řízení přístupu, zotavení."
       }
     ]
   },
@@ -554,6 +1170,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Primární klíč je unikátní, NOT NULL a jednoznačně určuje řádek."
+      },
+      {
+        q: "Co je entita v E-R modelu?",
+        options: [
+          "Objekt reálného světa, který chceme modelovat (např. Zákazník, Produkt)",
+          "Sloupec tabulky",
+          "Cizí klíč",
+          "Vztah mezi tabulkami"
+        ],
+        correct: 0,
+        explanation: "Entita má atributy a tvoří základ E-R modelu; je reprezentována tabulkou."
+      },
+      {
+        q: "Co je slabá entita?",
+        options: [
+          "Entita, jejíž identita závisí na jiné (silné) entitě",
+          "Entita s málo atributy",
+          "Entita, která se zřídka mění",
+          "Entita bez vazeb"
+        ],
+        correct: 0,
+        explanation: "Slabá entita nemá vlastní klíč a identifikuje se přes vazbu na silnou entitu."
+      },
+      {
+        q: "Co je první normální forma (1NF)?",
+        options: [
+          "Všechny atributy jsou atomické (nedělitelné), bez opakujících se skupin",
+          "Tabulka má primární klíč",
+          "Žádné duplicity",
+          "Maximálně 3 sloupce"
+        ],
+        correct: 0,
+        explanation: "1NF zakazuje vícenásobné/strukturované hodnoty v jedné buňce."
+      },
+      {
+        q: "Co je BCNF (Boyce-Codd NF)?",
+        options: [
+          "Každá netriviální funkční závislost má levou stranu superklíč",
+          "Stejné jako 3NF",
+          "Tabulka s indexem",
+          "Forma bez NULL hodnot"
+        ],
+        correct: 0,
+        explanation: "BCNF je silnější verze 3NF; eliminuje všechny anomálie z funkčních závislostí."
+      },
+      {
+        q: "Co je funkční závislost A → B?",
+        options: [
+          "Hodnota atributu A jednoznačně určuje hodnotu atributu B",
+          "A je funkce volaná z B",
+          "B je závislé na velikosti A",
+          "A je primární klíč"
+        ],
+        correct: 0,
+        explanation: "FD A→B: dva řádky se stejnou hodnotou A mají vždy stejnou B."
+      },
+      {
+        q: "Co je vztah ISA (generalizace) v E-R?",
+        options: [
+          "Specializace/generalizace mezi entitami (např. Student ISA Osoba)",
+          "Vztah identifikace",
+          "Vztah agregace",
+          "Atribut typu boolean"
+        ],
+        correct: 0,
+        explanation: "ISA vyjadřuje hierarchii – podtyp dědí atributy nadtypu."
+      },
+      {
+        q: "Co znamená kardinalita M:N?",
+        options: [
+          "Více entit prvního typu se vztahuje k více entitám druhého typu",
+          "Vždy přesně 1:1",
+          "Nepovolený vztah",
+          "Volitelný vztah"
+        ],
+        correct: 0,
+        explanation: "M:N (např. student-předmět): student má více předmětů, předmět má více studentů."
       }
     ]
   },
@@ -616,6 +1309,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "MVP pipeline: model do světa, do prostoru kamery, do clip space."
+      },
+      {
+        q: "Co reprezentuje rotace v 3D pomocí kvaternionů?",
+        options: [
+          "Kompaktní reprezentace rotace bez problému gimbal lock",
+          "Translaci o vektor",
+          "Změnu měřítka",
+          "Projekci do 2D"
+        ],
+        correct: 0,
+        explanation: "Kvaterniony (4 čísla) nahrazují Eulerovy úhly – stabilní interpolace a žádný gimbal lock."
+      },
+      {
+        q: "Jaký je rozdíl mezi perspektivní a ortografickou projekcí?",
+        options: [
+          "Perspektivní zmenšuje vzdálené objekty, ortografická zachovává paralelní linie",
+          "Perspektivní je v 2D, ortografická v 3D",
+          "Není rozdíl",
+          "Perspektivní je rychlejší"
+        ],
+        correct: 0,
+        explanation: "Perspektiva napodobuje lidský pohled; ortografická zachovává paralelnost (CAD, plány)."
+      },
+      {
+        q: "Co je transformační matice v homogenních souřadnicích pro 3D?",
+        options: [
+          "Matice 4×4",
+          "Matice 3×3",
+          "Matice 2×2",
+          "Vektor o 4 prvcích"
+        ],
+        correct: 0,
+        explanation: "Matice 4×4 kombinuje rotaci, škálování (3×3 podblok) a translaci."
+      },
+      {
+        q: "Co je translace bodu (x,y,z) o vektor (a,b,c)?",
+        options: [
+          "Nový bod (x+a, y+b, z+c)",
+          "Násobení skalárem",
+          "Otáčení kolem počátku",
+          "Změna jednotek"
+        ],
+        correct: 0,
+        explanation: "Translace přičítá vektor; v homogenních souřadnicích se vyjádří maticí 4×4."
+      },
+      {
+        q: "Co je near a far plane kamery?",
+        options: [
+          "Bližší a vzdálenější ořezová rovina viewing frustum",
+          "Vzdálenost dvou objektů",
+          "Hloubka stínu",
+          "Velikost textury"
+        ],
+        correct: 0,
+        explanation: "Near/far definují rozsah hloubky kamery; objekty mimo nejsou vykresleny."
+      },
+      {
+        q: "Co je determinant matice rotace?",
+        options: [
+          "Vždy +1 (zachovává orientaci a délky)",
+          "Vždy 0",
+          "Závisí na úhlu",
+          "Vždy -1"
+        ],
+        correct: 0,
+        explanation: "Rotace je ortonormální transformace; determinant = 1, transponovaná = inverzní."
+      },
+      {
+        q: "Co znamená NDC (Normalized Device Coordinates)?",
+        options: [
+          "Souřadnicový systém po projekci v rozsahu [-1,1] v každé ose",
+          "Pixelové souřadnice obrazovky",
+          "Souřadnice v modelu",
+          "Souřadnice světa"
+        ],
+        correct: 0,
+        explanation: "Po projekci a perspektivním dělení leží vrcholy v NDC; pak se mapují na obrazovku."
       }
     ]
   },
@@ -678,6 +1448,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "DI usnadňuje výměnu implementací a izolaci komponent v testech."
+      },
+      {
+        q: "Co je Service Locator?",
+        options: [
+          "Alternativa k DI – centrální registr, ze kterého si komponenty vyžadují závislosti",
+          "Síťový lokátor",
+          "Routovací mechanismus",
+          "GPS služba"
+        ],
+        correct: 0,
+        explanation: "Service Locator skrývá vyhledávání závislostí; je považován za horší než DI (skryté vazby)."
+      },
+      {
+        q: "Který návrhový vzor je úzce spjat s IoC?",
+        options: [
+          "Hollywood Principle ('Don't call us, we'll call you')",
+          "Singleton",
+          "Visitor",
+          "Iterator"
+        ],
+        correct: 0,
+        explanation: "Hollywood Principle vyjadřuje IoC: framework volá kód, ne naopak."
+      },
+      {
+        q: "Které IoC nástroje patří mezi známé v Javě?",
+        options: [
+          "Spring, Google Guice, CDI",
+          "Maven, Gradle",
+          "JUnit, Mockito",
+          "Hibernate, JPA"
+        ],
+        correct: 0,
+        explanation: "Spring Framework je nejpoužívanější IoC/DI kontejner v Java ekosystému."
+      },
+      {
+        q: "Co je životní cyklus 'singleton' v IoC kontejneru?",
+        options: [
+          "Kontejner vytvoří instanci jednou a sdílí ji všem požadavkům",
+          "Vytvoří novou instanci při každém požadavku",
+          "Instance žije jen v rámci HTTP požadavku",
+          "Instance se nikdy nevytvoří"
+        ],
+        correct: 0,
+        explanation: "Singleton scope: jedna sdílená instance v rámci kontejneru."
+      },
+      {
+        q: "Jaká je nevýhoda DI?",
+        options: [
+          "Vyšší složitost konfigurace a obtížnější ladění závislostí",
+          "Vyžaduje speciální hardware",
+          "Nelze testovat",
+          "Vyžaduje databázi"
+        ],
+        correct: 0,
+        explanation: "DI přidává vrstvu abstrakce; chyby v konfiguraci se hůře hledají."
+      },
+      {
+        q: "Co znamená 'wiring' v IoC?",
+        options: [
+          "Propojování objektů a jejich závislostí v kontejneru",
+          "Síťové připojení",
+          "Hardware zapojení",
+          "Routování požadavků"
+        ],
+        correct: 0,
+        explanation: "Wiring = nastavení vazeb mezi komponentami (XML, anotace, kód)."
+      },
+      {
+        q: "Co znamená princip 'Dependency Inversion'?",
+        options: [
+          "Vyšší vrstvy nezávisí na nižších, obě závisí na abstrakcích",
+          "Změna pořadí závislostí",
+          "Inverze grafu závislostí",
+          "Eliminace všech závislostí"
+        ],
+        correct: 0,
+        explanation: "Dependency Inversion je SOLID princip; DI je technika jeho realizace."
       }
     ]
   },
@@ -740,6 +1587,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "REST API typicky používá Bearer tokeny (JWT), OAuth 2.0 flow pro autorizaci."
+      },
+      {
+        q: "Která HTTP metoda se používá pro vytvoření nového zdroje?",
+        options: [
+          "POST",
+          "GET",
+          "DELETE",
+          "OPTIONS"
+        ],
+        correct: 0,
+        explanation: "POST se typicky používá pro vytvoření; PUT pro úplnou náhradu existujícího zdroje."
+      },
+      {
+        q: "Co znamená stavový kód HTTP 404?",
+        options: [
+          "Not Found – zdroj nebyl nalezen",
+          "OK",
+          "Internal Server Error",
+          "Unauthorized"
+        ],
+        correct: 0,
+        explanation: "4xx jsou chyby klienta; 404 znamená neexistující URL/zdroj."
+      },
+      {
+        q: "Co je HATEOAS v REST?",
+        options: [
+          "Hypermedia jako motor stavu aplikace – odpovědi obsahují odkazy na další akce",
+          "Hashovací algoritmus",
+          "Type safety pro REST",
+          "Cachovací mechanismus"
+        ],
+        correct: 0,
+        explanation: "HATEOAS umožňuje klientovi navigovat API přes odkazy v odpovědi (úroveň 3 Richardson Maturity)."
+      },
+      {
+        q: "Co je gateway v mikroslužbové architektuře?",
+        options: [
+          "Vstupní bod, který směruje požadavky na příslušné mikroslužby",
+          "Databázová brána",
+          "Firewall",
+          "Webový prohlížeč"
+        ],
+        correct: 0,
+        explanation: "API Gateway agreguje volání, řeší autentizaci, rate limiting, routing."
+      },
+      {
+        q: "Co je service discovery v mikroslužbách?",
+        options: [
+          "Mechanismus, kterým služby najdou síťové adresy ostatních služeb (např. Eureka, Consul)",
+          "Vyhledávání služeb v databázi",
+          "DNS rezolver",
+          "Detekce chyb služeb"
+        ],
+        correct: 0,
+        explanation: "Service discovery udržuje registr běžících instancí; klient získá aktuální adresu."
+      },
+      {
+        q: "Co je circuit breaker pattern?",
+        options: [
+          "Vzor, který zabraňuje opakovaným voláním selhávající služby",
+          "Bezpečnostní zařízení v datacentru",
+          "Detekce DDoS útoků",
+          "Komprese odpovědí"
+        ],
+        correct: 0,
+        explanation: "Circuit breaker (Hystrix): po opakovaných selháních se 'otevře' a falešně rychle selhává."
+      },
+      {
+        q: "Co je SOAP?",
+        options: [
+          "Simple Object Access Protocol – XML protokol pro výměnu strukturovaných dat",
+          "Skriptovací jazyk",
+          "Bezpečnostní protokol",
+          "Šifrovací algoritmus"
+        ],
+        correct: 0,
+        explanation: "SOAP používá XML envelope; nadstavuje WS-Security, WS-Addressing aj."
       }
     ]
   },
@@ -802,6 +1726,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Scan-line (obrazová) prochází řádky rastru; objektová (seed/flood fill) vychází z geometrie objektu."
+      },
+      {
+        q: "Který algoritmus rasterizuje kružnici?",
+        options: [
+          "Bresenhamův algoritmus pro kružnici (midpoint circle)",
+          "Cohen-Sutherland",
+          "Phong",
+          "DDA"
+        ],
+        correct: 0,
+        explanation: "Midpoint circle algorithm využívá symetrie kružnice a celočíselné inkrementy."
+      },
+      {
+        q: "Co je anti-aliasing?",
+        options: [
+          "Techniky pro vyhlazení zubatých hran (např. SSAA, MSAA, FXAA)",
+          "Zvýšení rozlišení",
+          "Komprese obrazu",
+          "Detekce hran"
+        ],
+        correct: 0,
+        explanation: "Anti-aliasing snižuje aliasing přivzorkováním nebo filtrací hran."
+      },
+      {
+        q: "Který barevný model je subtraktivní a používá se v tisku?",
+        options: [
+          "CMYK",
+          "RGB",
+          "HSV",
+          "YUV"
+        ],
+        correct: 0,
+        explanation: "CMYK: Cyan, Magenta, Yellow, blacK – odečítají barvy z bílého papíru."
+      },
+      {
+        q: "Co reprezentuje model HSV?",
+        options: [
+          "Hue (odstín), Saturation (sytost), Value (jas) – intuitivní pro člověka",
+          "Hardware Standard Video",
+          "High Speed Vector",
+          "Histogram, Saturation, Volume"
+        ],
+        correct: 0,
+        explanation: "HSV/HSB je vhodný pro výběr barev v UI; odděluje odstín od jasu."
+      },
+      {
+        q: "Co je DDA algoritmus?",
+        options: [
+          "Digital Differential Analyzer – rasterizace úsečky inkrementálním krokem",
+          "Diskrétní digitální analýza",
+          "Dynamický datový algoritmus",
+          "Algoritmus 3D triangulace"
+        ],
+        correct: 0,
+        explanation: "DDA inkrementuje x a y dle směrnice; je jednodušší ale pomalejší než Bresenham (užívá floats)."
+      },
+      {
+        q: "Co je scan-line algoritmus pro vyplňování polygonu?",
+        options: [
+          "Prochází obraz po řádcích a vyplňuje úseky mezi průsečíky hran",
+          "Vyplňuje od náhodného bodu",
+          "Rasterizuje pouze obrys",
+          "Algoritmus pro stínování"
+        ],
+        correct: 0,
+        explanation: "Scan-line fill: pro každý řádek se najdou průsečíky s hranami a páry se vyplní."
+      },
+      {
+        q: "Co je rozlišení (resolution) rastrového obrazu?",
+        options: [
+          "Počet pixelů v šířce a výšce obrazu",
+          "Počet barev na pixel",
+          "Velikost souboru",
+          "Rychlost zobrazení"
+        ],
+        correct: 0,
+        explanation: "Rozlišení např. 1920×1080 určuje detail; bit depth určuje počet barev."
       }
     ]
   },
@@ -864,6 +1865,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Gouraud: osvětlení na vrcholech + lineární interpolace barvy přes plochu."
+      },
+      {
+        q: "Co je Phongovo stínování?",
+        options: [
+          "Interpolace normál mezi vrcholy a výpočet osvětlení na každém pixelu",
+          "Osvětlení pouze na vrcholech",
+          "Flat shading",
+          "Ray tracing"
+        ],
+        correct: 0,
+        explanation: "Phong shading dává kvalitnější výsledky než Gouraud (zejména spekulární odlesky)."
+      },
+      {
+        q: "Co je vertex buffer object (VBO)?",
+        options: [
+          "Paměťový buffer na GPU obsahující data vrcholů (pozice, normály, UV)",
+          "Buffer textur",
+          "Frame buffer",
+          "Buffer zvukových vzorků"
+        ],
+        correct: 0,
+        explanation: "VBO uloží vertex data do GPU paměti pro rychlý přístup při renderingu."
+      },
+      {
+        q: "Co je back-face culling?",
+        options: [
+          "Vyřazení polygonů odvrácených od kamery z rasterizace",
+          "Odstranění objektů za kamerou",
+          "Komprese textur",
+          "Vyřazení šumu"
+        ],
+        correct: 0,
+        explanation: "Back-face culling šetří výkon: polygony obrácené od kamery se nevykreslují (pokud nejsou průhledné)."
+      },
+      {
+        q: "Co je shadow mapping?",
+        options: [
+          "Generování stínů pomocí mapy hloubek z pohledu světla",
+          "Mapování textur",
+          "Mapování stínů na povrch",
+          "Optimalizace osvětlení"
+        ],
+        correct: 0,
+        explanation: "Shadow map: renderuje hloubku scény z pohledu světla; pixel je ve stínu, je-li dál než hodnota v mapě."
+      },
+      {
+        q: "Co je ray tracing?",
+        options: [
+          "Sledování paprsků od kamery skrz pixely, jejich průniky s objekty a výpočet osvětlení",
+          "Rastrový algoritmus pro úsečky",
+          "2D vykreslování čar",
+          "Komprese 3D modelů"
+        ],
+        correct: 0,
+        explanation: "Ray tracing produkuje fyzikálně realistické obrazy (odrazy, lomy, stíny), je výpočetně náročné."
+      },
+      {
+        q: "Co je painter's algorithm pro viditelnost?",
+        options: [
+          "Vykreslování polygonů od nejvzdálenějšího po nejbližší přemalováním",
+          "Stínování ploch",
+          "Pixelová filtrace",
+          "Generování textur"
+        ],
+        correct: 0,
+        explanation: "Painter: seřadí polygony dle hloubky a vykreslí v pořadí. Selhává u prokládajících se polygonů."
+      },
+      {
+        q: "Co je grafický zobrazovací řetězec (graphics pipeline)?",
+        options: [
+          "Posloupnost fází: vertex processing, primitive assembly, rasterizace, fragment processing",
+          "Pořadí GPU karet",
+          "Pořadí monitorů",
+          "Síťový tok"
+        ],
+        correct: 0,
+        explanation: "Pipeline: vertices → transformace → rasterizace → pixely → framebuffer."
       }
     ]
   },
@@ -926,6 +2004,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Segmentace seskupuje pixely (prahování, region growing, watershed, neuronové sítě)."
+      },
+      {
+        q: "Co je kvantování v digitalizaci obrazu?",
+        options: [
+          "Převod spojité jasové hodnoty na omezený počet diskrétních úrovní",
+          "Vzorkování v prostoru",
+          "Komprese obrazu",
+          "Detekce hran"
+        ],
+        correct: 0,
+        explanation: "Kvantování diskretizuje hodnoty; 8-bit dává 256 úrovní jasu na kanál."
+      },
+      {
+        q: "Co říká Nyquistův teorém?",
+        options: [
+          "Vzorkovací frekvence musí být alespoň dvojnásobkem nejvyšší frekvence signálu",
+          "Obraz musí mít sudý počet pixelů",
+          "Komprese ztrácí 50% informace",
+          "Signál nemůže být obnoven"
+        ],
+        correct: 0,
+        explanation: "Nyquist: f_s ≥ 2·f_max, jinak vzniká aliasing."
+      },
+      {
+        q: "Který filtr detekuje hrany?",
+        options: [
+          "Sobelův operátor",
+          "Gaussův filtr",
+          "Mediánový filtr",
+          "Box filter"
+        ],
+        correct: 0,
+        explanation: "Sobel počítá gradient intenzity; alternativy Prewitt, Canny edge detector."
+      },
+      {
+        q: "Co dělá mediánový filtr?",
+        options: [
+          "Nahrazuje hodnotu pixelu mediánem hodnot z okolí – odstraní impulzní šum",
+          "Průměrování okolí",
+          "Detekce hran",
+          "Zvyšuje kontrast"
+        ],
+        correct: 0,
+        explanation: "Mediánový filtr je robustní vůči 'salt and pepper' šumu; neostří hrany jako průměrování."
+      },
+      {
+        q: "Která komprese je ztrátová?",
+        options: [
+          "JPEG",
+          "PNG",
+          "BMP",
+          "GIF"
+        ],
+        correct: 0,
+        explanation: "JPEG odstraňuje vysoké frekvence (DCT, kvantování) – nelze přesně rekonstruovat původní obraz."
+      },
+      {
+        q: "Co je ekvalizace histogramu?",
+        options: [
+          "Úprava histogramu pro rovnoměrnější rozložení intenzit a vyšší kontrast",
+          "Komprese histogramu",
+          "Detekce módu histogramu",
+          "Inverze barev"
+        ],
+        correct: 0,
+        explanation: "Equalization roztáhne histogram, často zvýší kontrast tmavých nebo světlých scén."
+      },
+      {
+        q: "Co je konvoluce v zpracování obrazu?",
+        options: [
+          "Operace, která aplikuje jádro (kernel) na okolí každého pixelu",
+          "Šifrování obrazu",
+          "Translace obrazu",
+          "Komprese souboru"
+        ],
+        correct: 0,
+        explanation: "Konvoluce s jádrem implementuje filtry (rozostření, zaostření, edge detection)."
       }
     ]
   },
@@ -988,6 +2143,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "AJAX/fetch umožňuje neblokující HTTP komunikaci v JS, navracení Promise."
+      },
+      {
+        q: "Co je XSS (Cross-Site Scripting)?",
+        options: [
+          "Útok vkládající škodlivý JavaScript do stránky, který se spustí u jiných uživatelů",
+          "Útok přes SQL injection",
+          "Útok na cookies",
+          "DOS útok"
+        ],
+        correct: 0,
+        explanation: "XSS: nedostatečné escapování vstupů; obrana CSP, escape HTML, sanitizace."
+      },
+      {
+        q: "Co je SQL injection?",
+        options: [
+          "Útok, kdy útočník vloží zhoubný SQL kód do vstupu aplikace",
+          "Optimalizace SQL dotazů",
+          "Nahrávání dat do DB",
+          "Útok na server přes port 1433"
+        ],
+        correct: 0,
+        explanation: "Obrana: prepared statements (parametrizované dotazy), ORM, validace vstupu."
+      },
+      {
+        q: "Co je cookie?",
+        options: [
+          "Malý kus dat uložený prohlížečem a odesílaný v hlavičce HTTP požadavku",
+          "JavaScript objekt",
+          "Šifrovaný token",
+          "Soubor s konfigurací"
+        ],
+        correct: 0,
+        explanation: "Cookies slouží k udržení session, preferencí; atributy HttpOnly, Secure, SameSite zlepšují bezpečnost."
+      },
+      {
+        q: "Co je CORS?",
+        options: [
+          "Cross-Origin Resource Sharing – mechanismus povolující požadavky napříč doménami",
+          "Protokol pro chat",
+          "Šifrovací standard",
+          "Komprese odpovědí"
+        ],
+        correct: 0,
+        explanation: "CORS hlavičky (Access-Control-Allow-Origin) říkají prohlížeči, zda smí přijmout odpověď."
+      },
+      {
+        q: "Co je SSR (Server-Side Rendering)?",
+        options: [
+          "Server vygeneruje HTML stránky a pošle ji klientovi",
+          "Klient renderuje vše JavaScriptem",
+          "Rendering grafiky na serveru",
+          "Server běží jako služba"
+        ],
+        correct: 0,
+        explanation: "SSR zlepšuje SEO a první načtení; CSR (client-side rendering) je výchozí u SPA."
+      },
+      {
+        q: "Co je WebSocket?",
+        options: [
+          "Plně duplexní obousměrný protokol nad TCP pro real-time komunikaci",
+          "Sockety pro web servery",
+          "HTTP polling",
+          "REST endpoint"
+        ],
+        correct: 0,
+        explanation: "WebSocket udržuje otevřené spojení (chat, notifikace, hry); upgrade z HTTP."
+      },
+      {
+        q: "Co je session v webové aplikaci?",
+        options: [
+          "Server-side mechanismus uchování stavu uživatele mezi požadavky",
+          "Připojení k databázi",
+          "Připojení k serveru",
+          "Identifikátor formuláře"
+        ],
+        correct: 0,
+        explanation: "Session je obvykle identifikována cookie s session ID; data uložena na serveru."
       }
     ]
   },
@@ -1050,6 +2282,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Mikroslužby navazují na SOA, ale jsou menší, samostatné, používají REST/messaging místo ESB."
+      },
+      {
+        q: "K čemu slouží návrhový vzor Singleton?",
+        options: [
+          "Zajištění, že třída má právě jednu instanci a poskytuje k ní globální přístup",
+          "Vytváření kopií objektu",
+          "Iterace nad kolekcí",
+          "Pozorování změn"
+        ],
+        correct: 0,
+        explanation: "Singleton omezuje konstruktor a poskytuje statickou metodu getInstance()."
+      },
+      {
+        q: "K čemu slouží návrhový vzor Factory?",
+        options: [
+          "Zapouzdřuje vytváření objektů (klient nepoužívá přímo konstruktor)",
+          "Sledování událostí",
+          "Hierarchie tříd",
+          "Sběr odpadu"
+        ],
+        correct: 0,
+        explanation: "Factory umožňuje vrátit různé podtypy podle vstupu; oddělí klienta od konkrétní třídy."
+      },
+      {
+        q: "K čemu slouží návrhový vzor Strategy?",
+        options: [
+          "Umožní definovat rodinu algoritmů a vybírat je za běhu",
+          "Strategické plánování projektu",
+          "Náhrada Singletonu",
+          "Synchronizaci vláken"
+        ],
+        correct: 0,
+        explanation: "Strategy zapouzdřuje algoritmus do třídy; klient pracuje přes rozhraní a může strategii vyměnit."
+      },
+      {
+        q: "K čemu slouží návrhový vzor Decorator?",
+        options: [
+          "Dynamicky přidává objektu zodpovědnost (chování) bez modifikace třídy",
+          "Mění vzhled GUI",
+          "Loguje volání",
+          "Šifruje data"
+        ],
+        correct: 0,
+        explanation: "Decorator obaluje objekt a přidává funkčnost; alternativa k dědičnosti."
+      },
+      {
+        q: "K čemu slouží návrhový vzor Adapter?",
+        options: [
+          "Převádí rozhraní třídy na jiné, které klient očekává",
+          "Sledování změn",
+          "Vytváření instancí",
+          "Iterace"
+        ],
+        correct: 0,
+        explanation: "Adapter umožňuje spolupráci tříd s nekompatibilními rozhraními."
+      },
+      {
+        q: "Co je MVP (Model-View-Presenter)?",
+        options: [
+          "Vzor podobný MVC, kde Presenter zprostředkovává komunikaci mezi View a Modelem",
+          "Pohled bez modelu",
+          "Pasivní controller",
+          "Pohled bez stavu"
+        ],
+        correct: 0,
+        explanation: "V MVP je View 'hloupé' a vše řídí Presenter; usnadňuje unit testy."
+      },
+      {
+        q: "Co je publish-subscribe pattern?",
+        options: [
+          "Producenti publikují události, konzumenti se přihlašují k odběru, decoupling přes broker",
+          "Synchronní volání metody",
+          "Streamování dat",
+          "Komprese zpráv"
+        ],
+        correct: 0,
+        explanation: "Pub-Sub odděluje producenty a konzumenty; známé implementace Kafka, RabbitMQ."
       }
     ]
   },
@@ -1112,6 +2421,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Insertion sort má O(n) pro téměř setříděná pole a malou konstantu pro malá n."
+      },
+      {
+        q: "Jaká je složitost Selection sortu?",
+        options: [
+          "O(n²) ve všech případech",
+          "O(n log n)",
+          "O(n)",
+          "O(log n)"
+        ],
+        correct: 0,
+        explanation: "Selection sort dělá n průchodů a hledá minimum v O(n) → O(n²); nestabilní."
+      },
+      {
+        q: "Je Quick sort stabilní?",
+        options: [
+          "Ne, klasická implementace není stabilní",
+          "Ano, vždy",
+          "Pouze u celých čísel",
+          "Pouze pro malá pole"
+        ],
+        correct: 0,
+        explanation: "Quick sort se klasicky implementuje in-place a není stabilní."
+      },
+      {
+        q: "Jaká je paměťová složitost Merge sortu?",
+        options: [
+          "O(n) – vyžaduje pomocné pole",
+          "O(1) – in-place",
+          "O(log n)",
+          "O(n²)"
+        ],
+        correct: 0,
+        explanation: "Merge sort potřebuje pomocné pole při slévání; in-place varianty jsou složité."
+      },
+      {
+        q: "Co je Heap sort?",
+        options: [
+          "Řazení pomocí binární haldy, O(n log n) garantovaně",
+          "Řazení v paměti haldy",
+          "Stabilní řazení",
+          "Random sort"
+        ],
+        correct: 0,
+        explanation: "Heap sort vybuduje max-heap a postupně extrahuje maximum; in-place, ale nestabilní."
+      },
+      {
+        q: "Co je Counting sort?",
+        options: [
+          "Neporovnávací řazení v O(n+k) pro malý rozsah celých čísel",
+          "Řazení počítáním inverzí",
+          "Distribuované řazení",
+          "Hashovací řazení"
+        ],
+        correct: 0,
+        explanation: "Counting sort předpokládá omezený rozsah hodnot k; lineární čas."
+      },
+      {
+        q: "Jaká je nejlepší dolní mez složitosti porovnávacího řazení?",
+        options: [
+          "Ω(n log n)",
+          "Ω(n)",
+          "Ω(log n)",
+          "Ω(n²)"
+        ],
+        correct: 0,
+        explanation: "Rozhodovací strom má n! listů; výška ≥ log₂(n!) = Ω(n log n)."
+      },
+      {
+        q: "Co dělá Quick sort při výběru pivota?",
+        options: [
+          "Rozdělí pole na prvky menší a větší než pivot a rekurzivně řadí části",
+          "Vybírá nejmenší prvek",
+          "Najde medián v O(1)",
+          "Slévá dvě poloviny"
+        ],
+        correct: 0,
+        explanation: "Partition kolem pivota; výběr pivota (medián, random) ovlivňuje výkon."
       }
     ]
   },
@@ -1174,6 +2560,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Hashovací tabulka transformuje klíč na index → průměrně O(1) operace."
+      },
+      {
+        q: "Jaká je nejhorší složitost naivního vyhledávání vzoru v textu?",
+        options: [
+          "O(n·m), kde n je délka textu a m délka vzoru",
+          "O(n log m)",
+          "O(n+m)",
+          "O(m²)"
+        ],
+        correct: 0,
+        explanation: "Naivní porovnávání pro každou pozici v textu znovu porovnává vzor."
+      },
+      {
+        q: "Jaká je nejhorší složitost KMP algoritmu?",
+        options: [
+          "O(n+m)",
+          "O(n·m)",
+          "O(n log n)",
+          "O(m²)"
+        ],
+        correct: 0,
+        explanation: "KMP díky prefixové funkci pracuje v lineárním čase."
+      },
+      {
+        q: "Co je kolize v hashovací tabulce?",
+        options: [
+          "Situace, kdy dvě různé klíče mají stejný hash",
+          "Přetečení paměti",
+          "Špatný klíč",
+          "Chyba hardware"
+        ],
+        correct: 0,
+        explanation: "Kolize se řeší řetězením (chaining) nebo otevřeným adresováním."
+      },
+      {
+        q: "Co je trie (písmenkový strom)?",
+        options: [
+          "Stromová struktura pro ukládání řetězců, kde každá hrana reprezentuje znak",
+          "Binární strom",
+          "Hash tabulka",
+          "B-strom"
+        ],
+        correct: 0,
+        explanation: "Trie umožňuje rychlé vyhledávání prefixů a slovníkové operace."
+      },
+      {
+        q: "Co je Aho-Corasick algoritmus?",
+        options: [
+          "Algoritmus pro současné vyhledávání více vzorů v textu",
+          "Algoritmus pro řazení",
+          "Algoritmus pro grafy",
+          "Komprese textu"
+        ],
+        correct: 0,
+        explanation: "Aho-Corasick rozšiřuje KMP na množinu vzorů pomocí trie a failure linků."
+      },
+      {
+        q: "Jaká je předpokládaná složitost vyhledávání v hashovací tabulce?",
+        options: [
+          "O(1) průměrně, O(n) v nejhorším případě",
+          "O(log n)",
+          "O(n)",
+          "O(n²)"
+        ],
+        correct: 0,
+        explanation: "S dobrou hash funkcí a nízkým load factorem dosáhneme konstantního přístupu."
+      },
+      {
+        q: "Co je load factor hashovací tabulky?",
+        options: [
+          "Poměr počtu uložených prvků k velikosti tabulky",
+          "Doba vyhledávání",
+          "Velikost hash funkce",
+          "Počet kolizí"
+        ],
+        correct: 0,
+        explanation: "Při vysokém load factoru roste počet kolizí; tabulka se obvykle rozšíří (rehashing)."
       }
     ]
   },
@@ -1236,6 +2699,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "Min-heap: rodič ≤ potomci; využití v Dijkstrovi, prioritních frontách."
+      },
+      {
+        q: "Co je orientovaný graf?",
+        options: [
+          "Graf, kde hrany mají směr (z u do v)",
+          "Graf bez cyklů",
+          "Souvislý graf",
+          "Strom"
+        ],
+        correct: 0,
+        explanation: "V orientovaném grafu jsou hrany uspořádané dvojice; reprezentace závisí na směru."
+      },
+      {
+        q: "Co je strom v teorii grafů?",
+        options: [
+          "Souvislý acyklický neorientovaný graf",
+          "Graf s cyklem",
+          "Úplný graf",
+          "Bipartitní graf"
+        ],
+        correct: 0,
+        explanation: "Strom má n-1 hran, jednoznačnou cestu mezi libovolnými dvěma vrcholy."
+      },
+      {
+        q: "Co je kostra grafu (spanning tree)?",
+        options: [
+          "Podgraf, který je stromem a obsahuje všechny vrcholy",
+          "Cyklus přes všechny vrcholy",
+          "Komponenta souvislosti",
+          "Část grafu s minimem hran"
+        ],
+        correct: 0,
+        explanation: "Kostra spojuje všechny vrcholy bez cyklů; v ohodnoceném grafu hledáme minimální kostru."
+      },
+      {
+        q: "Co je úplný graf K_n?",
+        options: [
+          "Graf, ve kterém existuje hrana mezi každou dvojicí vrcholů",
+          "Graf bez hran",
+          "Strom s n vrcholy",
+          "Bipartitní graf"
+        ],
+        correct: 0,
+        explanation: "Úplný graf K_n má n(n-1)/2 hran."
+      },
+      {
+        q: "Co je bipartitní graf?",
+        options: [
+          "Graf, jehož vrcholy lze rozdělit do dvou množin tak, že každá hrana je mezi nimi",
+          "Graf se dvěma komponentami",
+          "Graf s dvěma vrcholy",
+          "Orientovaný graf"
+        ],
+        correct: 0,
+        explanation: "Bipartitní graf nemá liché cykly; např. K_{3,3} je bipartitní."
+      },
+      {
+        q: "Jaká je paměťová složitost matice sousednosti?",
+        options: [
+          "O(V²)",
+          "O(V+E)",
+          "O(V)",
+          "O(E)"
+        ],
+        correct: 0,
+        explanation: "Matice V×V; vhodná pro husté grafy, jinak plýtvá pamětí."
+      },
+      {
+        q: "Co je stupeň vrcholu?",
+        options: [
+          "Počet hran incidentních s vrcholem",
+          "Vzdálenost od kořene",
+          "Pořadí vrcholu",
+          "Počet sousedů na úrovni 2"
+        ],
+        correct: 0,
+        explanation: "V orientovaném grafu rozlišujeme vstupní a výstupní stupeň."
       }
     ]
   },
@@ -1298,6 +2838,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "BFS používá frontu pro postupné zpracování vrstev od zdroje."
+      },
+      {
+        q: "Jaká je časová složitost Dijkstrova algoritmu s haldou?",
+        options: [
+          "O((V+E) log V)",
+          "O(V²)",
+          "O(V·E)",
+          "O(E²)"
+        ],
+        correct: 0,
+        explanation: "S binární haldou je složitost O((V+E) log V); s Fibonacciho haldou O(E + V log V)."
+      },
+      {
+        q: "Který algoritmus zvládá záporné hrany v grafu?",
+        options: [
+          "Bellman-Ford",
+          "Dijkstra",
+          "Prim",
+          "Kruskal"
+        ],
+        correct: 0,
+        explanation: "Bellman-Ford je O(V·E), umí detekovat záporné cykly."
+      },
+      {
+        q: "Který algoritmus počítá nejkratší cesty mezi všemi dvojicemi vrcholů?",
+        options: [
+          "Floyd-Warshall",
+          "Dijkstra",
+          "Kruskal",
+          "DFS"
+        ],
+        correct: 0,
+        explanation: "Floyd-Warshall: dynamické programování, O(V³); funguje i pro záporné (ne cykly)."
+      },
+      {
+        q: "Jakou datovou strukturu používá DFS?",
+        options: [
+          "Zásobník (rekurze nebo explicitní stack)",
+          "Frontu",
+          "Haldu",
+          "Hash tabulku"
+        ],
+        correct: 0,
+        explanation: "DFS přirozeně využívá rekurzi, případně explicitní zásobník."
+      },
+      {
+        q: "K čemu lze využít DFS?",
+        options: [
+          "Detekce cyklů, topologické řazení, hledání komponent souvislosti",
+          "Pouze pro stromy",
+          "Pouze pro nejkratší cesty",
+          "Komprese grafů"
+        ],
+        correct: 0,
+        explanation: "DFS je všestranný; mnoho aplikací v grafové teorii."
+      },
+      {
+        q: "Co je topologické uspořádání DAG?",
+        options: [
+          "Lineární uspořádání vrcholů tak, že každá hrana vede zleva doprava",
+          "Uspořádání podle stupně",
+          "Nejkratší cesta",
+          "BFS pořadí"
+        ],
+        correct: 0,
+        explanation: "Topologické řazení existuje právě tehdy, když graf nemá cykly (DAG)."
+      },
+      {
+        q: "Co je most (bridge) v grafu?",
+        options: [
+          "Hrana, jejíž odebrání zvýší počet komponent souvislosti",
+          "Cesta mezi vrcholy",
+          "Cyklus",
+          "Vrchol nejvyššího stupně"
+        ],
+        correct: 0,
+        explanation: "Mosty se hledají pomocí DFS a low-link hodnot (Tarjan)."
       }
     ]
   },
@@ -1360,6 +2977,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "f(n) = g(n) + h(n); h musí být dolním odhadem skutečné vzdálenosti."
+      },
+      {
+        q: "Co je stavový prostor v UI?",
+        options: [
+          "Množina všech možných konfigurací (stavů) problému a přechody mezi nimi",
+          "Paměť počítače",
+          "3D scéna",
+          "Databáze pravidel"
+        ],
+        correct: 0,
+        explanation: "Stavový prostor (graf) – hledání řešení = nalezení cesty z počátečního do cílového stavu."
+      },
+      {
+        q: "Co je silná AI vs. slabá AI?",
+        options: [
+          "Silná AI tvrdí, že stroj má skutečné vědomí; slabá jen simuluje inteligenci",
+          "Silná je rychlejší",
+          "Slabá nepoužívá neuronové sítě",
+          "Není rozdíl"
+        ],
+        correct: 0,
+        explanation: "Silná (Strong) AI: stroj má mysl; slabá (Weak): jen nástroj simulující chování."
+      },
+      {
+        q: "Co je informované vs. neinformované prohledávání?",
+        options: [
+          "Informované využívá heuristiku (např. A*), neinformované ne (BFS, DFS)",
+          "Informované má více paměti",
+          "Neinformované je rychlejší",
+          "Není rozdíl"
+        ],
+        correct: 0,
+        explanation: "Heuristika navádí prohledávání ke slibným stavům; neinformované prochází systematicky."
+      },
+      {
+        q: "Co je iterativní prohlubování (IDS)?",
+        options: [
+          "Opakované DFS s postupně rostoucím limitem hloubky",
+          "Iterativní BFS",
+          "Genetický algoritmus",
+          "Dynamické programování"
+        ],
+        correct: 0,
+        explanation: "IDS kombinuje úspornost DFS s úplností BFS; vhodné pro neznámou hloubku."
+      },
+      {
+        q: "Co je greedy best-first search?",
+        options: [
+          "Prohledávání řízené pouze heuristikou h(n), bez ceny dosud uražené",
+          "Genetický algoritmus",
+          "Bezhladové hledání",
+          "Algoritmus s LIFO frontou"
+        ],
+        correct: 0,
+        explanation: "Greedy je rychlý, ale nezaručuje optimalitu (na rozdíl od A*)."
+      },
+      {
+        q: "Co je expertní systém?",
+        options: [
+          "Program využívající znalostní bázi a inferenční mechanismus pro řešení problémů v doméně",
+          "Konzultační firma",
+          "Databáze odborníků",
+          "Hra simulující experta"
+        ],
+        correct: 0,
+        explanation: "Expertní systémy (MYCIN, Prospector) obsahují fakta a pravidla typu IF-THEN."
+      },
+      {
+        q: "Co je minimax algoritmus?",
+        options: [
+          "Algoritmus pro hry dvou hráčů hledající tah maximalizující minimum protihráče",
+          "Algoritmus pro min a max prvek",
+          "Optimalizace funkce",
+          "Algoritmus pro grafy"
+        ],
+        correct: 0,
+        explanation: "Minimax + alfa-beta prořezávání: standardní přístup pro hry jako šachy."
       }
     ]
   },
@@ -1422,6 +3116,83 @@ const SOFT_TOPICS = [
         ],
         correct: 0,
         explanation: "CRUM (Thagard): kognice = výpočetní operace nad mentálními reprezentacemi."
+      },
+      {
+        q: "Co je aktivační funkce v neuronu?",
+        options: [
+          "Nelineární funkce aplikovaná na váženou sumu vstupů (např. ReLU, sigmoid, tanh)",
+          "Inicializátor vah",
+          "Loss funkce",
+          "Optimalizační algoritmus"
+        ],
+        correct: 0,
+        explanation: "Aktivační funkce zavádí nelinearitu, bez níž by síť byla ekvivalentní lineárnímu modelu."
+      },
+      {
+        q: "Co je overfitting (přeučení) neuronové sítě?",
+        options: [
+          "Síť se naučí trénovací data včetně šumu a špatně generalizuje na nová",
+          "Síť běží příliš dlouho",
+          "Síť má málo vrstev",
+          "Síť ztrácí váhy"
+        ],
+        correct: 0,
+        explanation: "Obrana: regularizace (L1/L2), dropout, více dat, early stopping."
+      },
+      {
+        q: "Co je crossover (křížení) v genetickém algoritmu?",
+        options: [
+          "Operace kombinující geny dvou rodičů do potomka",
+          "Náhodná změna jednoho genu",
+          "Selekce rodičů",
+          "Ohodnocení jedince"
+        ],
+        correct: 0,
+        explanation: "Crossover (one-point, uniform) předává vlastnosti potomkům; mutace přidává variabilitu."
+      },
+      {
+        q: "Co je konvoluční neuronová síť (CNN)?",
+        options: [
+          "Síť obsahující konvoluční vrstvy vhodná pro zpracování obrazů",
+          "Síť bez vah",
+          "Síť s rekurentní vrstvou",
+          "Síť pro grafy"
+        ],
+        correct: 0,
+        explanation: "CNN sdílí váhy (konvoluce) a využívá lokální spojení; RNN jsou pro sekvence."
+      },
+      {
+        q: "Co je rekurentní neuronová síť (RNN)?",
+        options: [
+          "Síť se zpětnými vazbami pro zpracování sekvencí (text, řeč)",
+          "Síť s opakovanými vrstvami",
+          "Síť bez aktivačních funkcí",
+          "Síť s jedním neuronem"
+        ],
+        correct: 0,
+        explanation: "RNN/LSTM/GRU pracují se stavem a zachycují závislosti v čase."
+      },
+      {
+        q: "Co je supervised learning?",
+        options: [
+          "Učení s učitelem – z trénovacích dvojic (vstup, požadovaný výstup)",
+          "Učení bez dat",
+          "Učení s posílením",
+          "Učení bez výstupů"
+        ],
+        correct: 0,
+        explanation: "Klasifikace, regrese; potřebujeme označená data."
+      },
+      {
+        q: "Co je reinforcement learning?",
+        options: [
+          "Agent se učí maximalizovat odměnu z interakce s prostředím",
+          "Učení s pevnými daty",
+          "Učení bez učitele",
+          "Pouze klasifikační úloha"
+        ],
+        correct: 0,
+        explanation: "RL: agent → akce → odměna; algoritmy Q-learning, policy gradient."
       }
     ]
   }

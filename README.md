@@ -1,3 +1,5 @@
+Vibecoded with CLAUDE
+
 # Státnice Bc. – Aplikovaná informatika (kvíz)
 
 Učební kvíz pro státní závěrečnou zkoušku bakalářského studia oboru Aplikovaná informatika.
