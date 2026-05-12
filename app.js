@@ -2,14 +2,43 @@ const SUBJECTS = {
   soft: {
     name: "Softwarové inženýrství (SOFT)",
     description: "23 okruhů z oblasti softwarového inženýrství, databází, grafiky a UI.",
-    topics: SOFT_TOPICS
+    topics: SOFT_TOPICS,
+    sets: typeof SOFT_TOPICS_V2 !== "undefined" ? { v2: SOFT_TOPICS_V2 } : {}
   },
   tsp: {
     name: "Technické a softwarové prostředky (TSP)",
     description: "19 okruhů z architektury počítačů, OS, sítí, IoT a programování.",
-    topics: TSP_TOPICS
+    topics: TSP_TOPICS,
+    sets: typeof TSP_TOPICS_V2 !== "undefined" ? { v2: TSP_TOPICS_V2 } : {}
   }
 };
+
+function getAvailableSetVersions(subjectKey) {
+  const versions = ["v1"];
+  const subject = SUBJECTS[subjectKey];
+  if (subject && subject.sets) {
+    Object.keys(subject.sets).forEach(v => {
+      if (!versions.includes(v)) versions.push(v);
+    });
+  }
+  return versions;
+}
+
+function getTopicQuestions(subjectKey, topic, version) {
+  if (!version || version === "v1") return topic.questions;
+  const subject = SUBJECTS[subjectKey];
+  const set = subject && subject.sets && subject.sets[version];
+  if (set && set[topic.id]) return set[topic.id];
+  return topic.questions;
+}
+
+const SET_KEY = "quiz.setVersion";
+function getSetVersion() {
+  return localStorage.getItem(SET_KEY) || "v1";
+}
+function setSetVersion(v) {
+  localStorage.setItem(SET_KEY, v);
+}
 
 const app = document.getElementById("app");
 const breadcrumbs = document.getElementById("breadcrumbs");
@@ -127,12 +156,19 @@ function renderTopic(subjectKey, topicId) {
   const topic = subject.topics.find(t => t.id === topicId);
   if (!topic) return renderSubject(subjectKey);
 
+  const availableVersions = getAvailableSetVersions(subjectKey);
+  let version = getSetVersion();
+  if (!availableVersions.includes(version)) version = "v1";
+  const sourceQuestions = getTopicQuestions(subjectKey, topic, version);
+
   quizState = {
     subjectKey,
     topicId,
     topic,
+    version,
+    availableVersions,
     current: 0,
-    questions: shuffle(topic.questions).map(q => {
+    questions: shuffle(sourceQuestions).map(q => {
       const opts = q.options.map((text, i) => ({ text, originallyCorrect: i === q.correct }));
       const shuffledOpts = shuffle(opts);
       const newCorrect = shuffledOpts.findIndex(o => o.originallyCorrect);
@@ -208,10 +244,23 @@ function renderQuiz() {
     body = `<div id="questions">${questions.map((q, qi) => renderQuestionCard(q, qi, qi + 1)).join("")}</div>`;
   }
 
+  const { availableVersions, version } = quizState;
+  const setSelector = availableVersions.length > 1 ? `
+    <div class="mode-toggle set-toggle">
+      <span>Sada otázek:</span>
+      ${availableVersions.map(v => `<button data-action="set-version" data-version="${v}" class="${v === version ? "" : "secondary"}">${v}</button>`).join("")}
+    </div>
+  ` : "";
+
   app.innerHTML = `
     <div class="quiz-header">
-      <h2>${topic.id}. ${topic.title}</h2>
-      <p>${topic.description}</p>
+      <div class="quiz-header-top">
+        <div>
+          <h2>${topic.id}. ${topic.title}</h2>
+          <p>${topic.description}</p>
+        </div>
+        ${setSelector}
+      </div>
       <div class="mode-toggle">
         <span>Zobrazení:</span>
         <button data-action="mode" data-mode="all" class="${mode === "all" ? "" : "secondary"}">Vše</button>
@@ -274,6 +323,9 @@ function renderQuiz() {
       } else if (action === "mode") {
         setMode(btn.dataset.mode);
         renderQuiz();
+      } else if (action === "set-version") {
+        setSetVersion(btn.dataset.version);
+        renderTopic(quizState.subjectKey, quizState.topicId);
       }
     });
   });

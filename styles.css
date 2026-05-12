@@ -148,6 +148,16 @@ footer {
 .quiz-header {
   margin-bottom: 1rem;
 }
+.quiz-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.set-toggle {
+  margin-top: 0;
+  flex-shrink: 0;
+}
 .quiz-header h2 {
   margin: 0 0 0.3rem;
   color: var(--accent);

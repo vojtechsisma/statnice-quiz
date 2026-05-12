@@ -9,7 +9,7 @@ Učební kvíz pro státní závěrečnou zkoušku bakalářského studia oboru 
 - **SOFT** – Softwarové inženýrství (23 okruhů)
 - **TSP** – Technické a softwarové prostředky (19 okruhů)
 
-Každý okruh obsahuje 5 výběrových otázek s vysvětlením.
+Každý okruh obsahuje dvě sady výběrových otázek s vysvětlením (sada **v1** ~12 otázek, sada **v2** ~6 otázek) – přepínat lze v pravém horním rohu okruhu volbou „Sada otázek“.
 
 ## Spuštění lokálně
 
